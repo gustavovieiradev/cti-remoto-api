@@ -41,6 +41,14 @@ export class AppController {
     return data;
   }
 
+  @Get('/api/public/cti/')
+  async cti(@Query() query: any) {
+    const { data } = await axios.get(
+      `http://165.227.182.73:8000/api/public/cti/?dsc_cti=&dat_cti=${query.dat_cti}&criador=&ano_letivo=2021`,
+    );
+    return data;
+  }
+
   @Post('/api/public/duvida/')
   async duvida(@Body() params: any) {
     const { data } = await axios.post(
