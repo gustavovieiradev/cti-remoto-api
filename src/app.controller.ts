@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post, Query } from '@nestjs/common';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { AppService } from './app.service';
 
 @Controller()
@@ -50,9 +50,20 @@ export class AppController {
   }
 
   @Post('/api/public/duvida/')
-  async duvida(@Body() params: any) {
+  async saveDuvida(@Body() params: any) {
+    console.log(33333333);
     const { data } = await axios.post(
       `http://165.227.182.73:8000/api/public/duvida/`,
+      params,
+    );
+    return data;
+  }
+
+  @Post('/api/public/cti/')
+  async saveCti(@Body() params: any) {
+    console.log(params);
+    const { data } = await axios.post(
+      `http://165.227.182.73:8000/api/public/cti/`,
       params,
     );
     return data;
