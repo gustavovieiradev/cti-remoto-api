@@ -68,4 +68,18 @@ export class AppController {
     );
     return data;
   }
+
+  @Post('/api/public/cti/remoto')
+  async saveCtiRemoto(@Body() params: any) {
+    try {
+      const { data } = await axios.post(
+        `http://165.227.182.73:8000/api/public/remoto/cti/`,
+        params,
+      );
+      return data;
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
+  }
 }
