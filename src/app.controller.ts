@@ -18,7 +18,7 @@ export class AppController {
   @Get('/api/public/conteudo/')
   async conteudos(@Query() query: any) {
     const { data } = await axios.get(
-      `http://165.227.182.73/api/public/conteudo/?ano_letivo=2021&disciplina=${query.disciplina}`,
+      `http://165.227.182.73/api/public/conteudo/?ano_letivo=${query.ano_letivo}&disciplina=${query.disciplina}`,
     );
     console.log(data);
     return data;
@@ -27,16 +27,16 @@ export class AppController {
   @Get('/api/public/questao/')
   async questoes(@Query() query: any) {
     const { data } = await axios.get(
-      `http://165.227.182.73/api/public/questao/?ano_letivo=2021&conteudo=${query.conteudo}`,
+      `http://165.227.182.73/api/public/questao/?ano_letivo=${query.ano_letivo}&conteudo=${query.conteudo}`,
     );
     console.log(data);
     return data;
   }
 
   @Get('/api/public/disciplina/')
-  async disciplinas() {
+  async disciplinas(@Query() query: any) {
     const { data } = await axios.get(
-      `http://165.227.182.73/api/public/disciplina/?ano_letivo=2021`,
+      `http://165.227.182.73/api/public/disciplina/?ano_letivo=${query.ano_letivo}`,
     );
     return data;
   }
@@ -44,7 +44,7 @@ export class AppController {
   @Get('/api/public/cti/')
   async cti(@Query() query: any) {
     const { data } = await axios.get(
-      `http://165.227.182.73/api/public/cti/?dsc_cti=&dat_cti=${query.dat_cti}&criador=&ano_letivo=2021`,
+      `http://165.227.182.73/api/public/cti/?dsc_cti=&dat_cti=${query.dat_cti}&criador=&ano_letivo=${query.ano_letivo}`,
     );
     return data;
   }
